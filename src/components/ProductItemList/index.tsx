@@ -1,18 +1,24 @@
 import * as S from "./style";
 
-const ProductItemList = () => {
+interface ProductItemListProps {
+  children: React.ReactNode;
+}
+
+const ProductItemList = ({ children }: ProductItemListProps) => {
   return (
     <section>
-        <S.ProductItemListHeader>
-            <S.ProductItemListHeaderTitle>Escolha os Sabores</S.ProductItemListHeaderTitle>
-            <S.ProductItemListHeaderSelect>
-                <option value="default">Selecione uma Mesa</option>
-                <option value="">Mesa</option>
-            </S.ProductItemListHeaderSelect>
-        </S.ProductItemListHeader>
-        <S.ProductItemList></S.ProductItemList>
+      <S.ProductItemListHeader>
+        <S.ProductItemListHeaderTitle>
+          Escolha os Sabores
+        </S.ProductItemListHeaderTitle>
+        <S.ProductItemListHeaderSelect>
+          <option value="default">Selecione uma Mesa</option>
+          <option value="">Mesa</option>
+        </S.ProductItemListHeaderSelect>
+      </S.ProductItemListHeader>
+      <S.ProductItemList>{children}</S.ProductItemList>
     </section>
   );
-}
+};
 
 export default ProductItemList;

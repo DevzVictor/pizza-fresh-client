@@ -3,6 +3,7 @@ import { ReactComponent as Search } from "assets/icons/search.svg";
 import Menu from "components/Menu";
 import ProductItemList from "components/ProductItemList"
 import ProductItem from "components/ProductItem";
+import OrderDetails from "components/OrderDetails";
 
 import { DateTime } from "luxon";
 
@@ -46,7 +47,7 @@ const Home = () => {
         </div>
       </S.HomeContent>
       <aside>
-        <p>detalhes do pedido</p>
+        <OrderDetails></OrderDetails>
       </aside>
     </S.Home>
   );
