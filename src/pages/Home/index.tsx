@@ -5,6 +5,7 @@ import ProductItemList from "components/ProductItemList";
 import ProductItem from "components/ProductItem";
 import OrderDetails from "components/OrderDetails";
 import Overlay from "components/Overlay";
+import CheckoutSection from "components/CheckoutSection";
 
 import { DateTime } from "luxon";
 
@@ -51,7 +52,7 @@ const Home = () => {
         <OrderDetails></OrderDetails>
       </aside>
       <Overlay>
-        
+        <CheckoutSection />
       </Overlay>
     </S.Home>
   );
