@@ -1,0 +1,35 @@
+import * as S from "./style";
+import { ReactComponent as Trash } from "assets/icons/trash.svg";
+
+const OrderItem = () => {
+  return (
+    <S.OrderItem>
+      <S.OrderItemRight>
+        <S.OrderItemRightTotalPrice>R$ 150</S.OrderItemRightTotalPrice>
+        <S.OrderItemRightTrash>
+          <Trash />
+        </S.OrderItemRightTrash>
+      </S.OrderItemRight>
+      <S.OrderItemLeft>
+        <S.OrderItemLeftTop>
+          <S.OrderItemProduct>
+            <S.OrderItemProductImage src="" alt="Pizza de..." />
+            <S.OrderItemProductDetailsName>
+              Nome do produto
+            </S.OrderItemProductDetailsName>
+            <S.OrderItemProductDetailsPrice>
+              Preço do produto
+            </S.OrderItemProductDetailsPrice>
+          </S.OrderItemProduct>
+          <S.OrderItemQuantity type="number" value="0" />
+        </S.OrderItemLeftTop>
+        <S.OrderItemLeftObservation
+          type="text"
+          placeholder="Observações do pedido"
+        />
+      </S.OrderItemLeft>
+    </S.OrderItem>
+  );
+};
+
+export default OrderItem;
