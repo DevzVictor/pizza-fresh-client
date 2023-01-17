@@ -1,9 +1,10 @@
 import { ReactComponent as Search } from "assets/icons/search.svg";
 
 import Menu from "components/Menu";
-import ProductItemList from "components/ProductItemList"
+import ProductItemList from "components/ProductItemList";
 import ProductItem from "components/ProductItem";
 import OrderDetails from "components/OrderDetails";
+import Overlay from "components/Overlay";
 
 import { DateTime } from "luxon";
 
@@ -49,6 +50,9 @@ const Home = () => {
       <aside>
         <OrderDetails></OrderDetails>
       </aside>
+      <Overlay>
+        
+      </Overlay>
     </S.Home>
   );
 };
