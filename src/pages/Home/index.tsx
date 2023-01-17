@@ -1,7 +1,11 @@
 import { ReactComponent as Search } from "assets/icons/search.svg";
+
 import Menu from "components/Menu";
 import ProductItemList from "components/ProductItemList"
+import ProductItem from "components/ProductItem";
+
 import { DateTime } from "luxon";
+
 import { navigationItems } from "data/navigation";
 import { RoutePath } from "types/routes";
 import * as S from "./style";
@@ -35,7 +39,9 @@ const Home = () => {
             <b>Pizzas</b>
           </S.HomeProductTitle>
           <S.HomeProductList>
-            <ProductItemList></ProductItemList>
+            <ProductItemList>
+              <ProductItem />
+            </ProductItemList>
           </S.HomeProductList>
         </div>
       </S.HomeContent>
