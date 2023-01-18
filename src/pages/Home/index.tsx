@@ -10,6 +10,8 @@ import { navigationItems } from "data/navigation";
 import { products } from "mocks/products";
 import { orders } from "mocks/orders";
 import { ProductResponse } from "types/Product";
+import { OrderType } from "types/orderType";
+import { useState } from "react";
 
 import { DateTime } from "luxon";
 
@@ -24,8 +26,11 @@ const Home = () => {
   });
 
   const navigate = useNavigate();
+  const [activeOrderType, setActiverOrderType] = useState(
+    OrderType.COMER_NO_LOCAL
+  );
   const handleNavigation = (path: RoutePath) => navigate(path);
-  const handleSelection = (product: ProductResponse) => {}
+  const handleSelection = (product: ProductResponse) => {};
 
   return (
     <S.Home>
@@ -56,7 +61,7 @@ const Home = () => {
           </S.HomeProductTitle>
           <S.HomeProductList>
             <ProductItemList>
-            {Boolean(products.length) &&
+              {Boolean(products.length) &&
                 products.map((product, index) => (
                   <ProductItem
                     product={product}
@@ -69,9 +74,13 @@ const Home = () => {
         </div>
       </S.HomeContent>
       <aside>
-        <OrderDetails orders={orders}></OrderDetails>
+        <OrderDetails
+          orders={orders}
+          onChangeActiveOrderType={(data) => setActiverOrderType(data)}
+          activeOrderType={activeOrderType}
+        ></OrderDetails>
       </aside>
-      {/* <Overlay>
+      {/* <Overlay></Overlay>
         <CheckoutSection />
       </Overlay> */}
     </S.Home>
