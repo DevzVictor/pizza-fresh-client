@@ -26,9 +26,13 @@ const Home = () => {
   });
 
   const navigate = useNavigate();
+
   const [activeOrderType, setActiverOrderType] = useState(
     OrderType.COMER_NO_LOCAL
   );
+
+  const [proceedToPayment, setProceedToPayment] = useState<boolean>(false)
+
   const [orders, setOrders] = useState<OrderItemType[]>([]);
 
   const handleNavigation = (path: RoutePath) => navigate(path);
@@ -93,15 +97,22 @@ const Home = () => {
       <aside>
         <OrderDetails
           orders={orders}
+          onProceedToPayment={() => setProceedToPayment(true)}
           onOrdersChange={(data) => setOrders(data)}
           onChangeActiveOrderType={(data) => setActiverOrderType(data)}
           activeOrderType={activeOrderType}
           onRemoveItem={handleRemoveOrderItem}
         ></OrderDetails>
       </aside>
-      {/* <Overlay></Overlay>
-        <CheckoutSection />
-      </Overlay> */}
+      {proceedToPayment && (
+        <Overlay>
+          <CheckoutSection
+            orders={orders}
+            onOrdersChange={(data) => setOrders(data)}
+            onCloseSection={() => setProceedToPayment(false)}
+          />
+        </Overlay>
+      )}
     </S.Home>
   );
 };
