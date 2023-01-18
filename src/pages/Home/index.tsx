@@ -35,6 +35,8 @@ const Home = () => {
 
   const [orders, setOrders] = useState<OrderItemType[]>([]);
 
+  const [selectedTable, setSelectedTable] = useState<number | undefined>();
+
   const handleNavigation = (path: RoutePath) => navigate(path);
 
   const handleSelection = (product: ProductResponse) => {
@@ -81,7 +83,7 @@ const Home = () => {
             <b>Pizzas</b>
           </S.HomeProductTitle>
           <S.HomeProductList>
-            <ProductItemList>
+            <ProductItemList onSelectTable={setSelectedTable}>
               {Boolean(products.length) &&
                 products.map((product, index) => (
                   <ProductItem
@@ -102,6 +104,7 @@ const Home = () => {
           onChangeActiveOrderType={(data) => setActiverOrderType(data)}
           activeOrderType={activeOrderType}
           onRemoveItem={handleRemoveOrderItem}
+          selectedTable={selectedTable}
         ></OrderDetails>
       </aside>
       {proceedToPayment && (
@@ -110,6 +113,7 @@ const Home = () => {
             orders={orders}
             onOrdersChange={(data) => setOrders(data)}
             onCloseSection={() => setProceedToPayment(false)}
+            selectedTable={selectedTable}
           />
         </Overlay>
       )}
