@@ -22,6 +22,7 @@ const OrderDetails = ({ orders }: OrderDetailsProps) => {
   useEffect(() => {
     setPriceState(price);
   }, [orders, price]);
+
   return (
     <S.OrderDetails>
       <S.OrderDetailsTitle>Detalhes do Pedido</S.OrderDetailsTitle>
