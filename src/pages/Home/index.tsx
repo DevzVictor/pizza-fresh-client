@@ -69,7 +69,7 @@ const Home = () => {
         </div>
       </S.HomeContent>
       <aside>
-        <OrderDetails></OrderDetails>
+        <OrderDetails orders={orders}></OrderDetails>
       </aside>
       {/* <Overlay>
         <CheckoutSection />
