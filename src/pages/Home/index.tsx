@@ -32,6 +32,7 @@ const Home = () => {
   const [orders, setOrders] = useState<OrderItemType[]>([]);
 
   const handleNavigation = (path: RoutePath) => navigate(path);
+
   const handleSelection = (product: ProductResponse) => {
     const existing = orders.find((i) => i.product.id === product.id);
     const quantity = existing ? existing.quantity + 1 : 1;
@@ -41,6 +42,11 @@ const Home = () => {
       ? orders.map((i) => (i.product.id === existing.product.id ? item : i))
       : [...orders, item];
     setOrders(list);
+  };
+
+  const handleRemoveOrderItem = (id: string) => {
+    const filtered = orders.filter((i) => i.product.id !== id);
+    setOrders(filtered);
   };
 
   return (
@@ -89,6 +95,7 @@ const Home = () => {
           orders={orders}
           onChangeActiveOrderType={(data) => setActiverOrderType(data)}
           activeOrderType={activeOrderType}
+          onRemoveItem={handleRemoveOrderItem}
         ></OrderDetails>
       </aside>
       {/* <Overlay></Overlay>

@@ -12,12 +12,14 @@ type OrderDetailsType = HTMLAttributes<HTMLDivElement>;
 type OrderDetailsProps = {
   orders: OrderItemType[];
   onChangeActiveOrderType: (data: OrderType) => void;
+  onRemoveItem: (id: string) => void;
   activeOrderType: OrderType;
 } & OrderDetailsType;
 
 const OrderDetails = ({
   orders,
   onChangeActiveOrderType,
+  onRemoveItem,
   activeOrderType,
 }: OrderDetailsProps) => {
   const price = orders
@@ -35,17 +37,23 @@ const OrderDetails = ({
       <S.OrderDetailsTitle>Detalhes do Pedido</S.OrderDetailsTitle>
       <S.OrderDetailsButtonGroup>
         <ButtonToggle
-          onClick={() => {onChangeActiveOrderType(OrderType.COMER_NO_LOCAL)}}
+          onClick={() => {
+            onChangeActiveOrderType(OrderType.COMER_NO_LOCAL);
+          }}
           active={activeOrderType === OrderType.COMER_NO_LOCAL}
           value="Comer no local"
         />
         <ButtonToggle
-          onClick={() => {onChangeActiveOrderType(OrderType.PARA_VIAGEM)}}
+          onClick={() => {
+            onChangeActiveOrderType(OrderType.PARA_VIAGEM);
+          }}
           active={activeOrderType === OrderType.PARA_VIAGEM}
           value="P/ Viagem"
         />
         <ButtonToggle
-          onClick={() => {onChangeActiveOrderType(OrderType.DELIVERY)}}
+          onClick={() => {
+            onChangeActiveOrderType(OrderType.DELIVERY);
+          }}
           active={activeOrderType === OrderType.DELIVERY}
           value="Delivery"
         />
@@ -63,6 +71,7 @@ const OrderDetails = ({
             Boolean(orders.length) ? (
               orders.map((item, index) => (
                 <OrderItem
+                  onRemoveItem={() => onRemoveItem(item.product.id)}
                   product={item.product}
                   quantity={item.quantity}
                   observation={item.observation}
