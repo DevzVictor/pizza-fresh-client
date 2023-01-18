@@ -16,7 +16,7 @@ const Settings = () => {
         <S.SettingsContent>
           <S.SettingsContentSidebar>
             {/* preciso alterar depois */}
-            <NavColumn activeRoute={RoutePath.SETTINGS_TABLES} />
+            <NavColumn activeRoute={RoutePath.SETTINGS_PRODUCTS} />
           </S.SettingsContentSidebar>
           <S.SettingsContentBox>
             <S.SettingsContentBoxEmpty>
