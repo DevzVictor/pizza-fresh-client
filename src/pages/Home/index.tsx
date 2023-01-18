@@ -93,6 +93,7 @@ const Home = () => {
       <aside>
         <OrderDetails
           orders={orders}
+          onOrdersChange={(data) => setOrders(data)}
           onChangeActiveOrderType={(data) => setActiverOrderType(data)}
           activeOrderType={activeOrderType}
           onRemoveItem={handleRemoveOrderItem}
