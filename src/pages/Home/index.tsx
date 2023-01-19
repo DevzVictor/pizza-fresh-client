@@ -122,7 +122,7 @@ const Home = () => {
           <S.HomeProductList>
             <ProductItemList tables={tables} onSelectTable={setSelectedTable}>
               {Boolean(products.length) &&
-                products.map((product, index) => (
+                filteredProducts.map((product, index) => (
                   <ProductItem
                     product={product}
                     key={`ProductItem-${index}`}
