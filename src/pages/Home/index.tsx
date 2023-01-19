@@ -14,6 +14,7 @@ import { OrderItemType } from "types/OrderItemType";
 import { useQuery } from "react-query";
 import { QueryKey } from "types/QueryKey";
 import { ProductService } from "services/ProductService";
+import { TableService } from "services/TableService";
 
 import { DateTime } from "luxon";
 
@@ -28,6 +29,13 @@ const Home = () => {
   });
 
   const navigate = useNavigate();
+
+  const { data: tablesData } = useQuery(
+    [QueryKey.TABLES],
+    TableService.getLista
+  );
+  
+  const tables = tablesData || [];
 
   const { data: productsData } = useQuery(
     [QueryKey.PRODUCTS],
@@ -96,7 +104,7 @@ const Home = () => {
             <b>Pizzas</b>
           </S.HomeProductTitle>
           <S.HomeProductList>
-            <ProductItemList onSelectTable={setSelectedTable}>
+            <ProductItemList tables={tables} onSelectTable={setSelectedTable}>
               {Boolean(products.length) &&
                 products.map((product, index) => (
                   <ProductItem
